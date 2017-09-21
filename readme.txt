@@ -3,7 +3,7 @@ Visual Studio Code fejlesztői környezettel, TypeScript nyelven Node.js-el a sz
 mivel fájlokat kell írni-olvasni.
 A csoport tagja:
 - XY1
-- XY2
+- Szarka Gábor (szarkagabor)
 - XY3
 
 VS Code + TypeScript + Node.js + Git
