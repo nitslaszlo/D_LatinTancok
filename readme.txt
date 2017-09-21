@@ -4,7 +4,7 @@ mivel fájlokat kell írni-olvasni.
 A csoport tagja:
 - Faust_Gábor (FaustGabor)
 - Szarka Gábor (szarkagabor)
-- XY3 
+- Attila
 
 VS Code + TypeScript + Node.js + Git
 =====================================
