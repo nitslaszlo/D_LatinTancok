@@ -16,10 +16,10 @@ export class Content {
       for (let i: number = 1; i < sor.length-2; i++) {
          if (sor[i].length > 0) tanc.push(new Táncok(sor[i], sor[i+1], sor[i+2] ));
       }
-      res.write("<p>2. feladat: Az első tánc "+tanc[0]+" és az utolsó tánc "+tanc[tanc.length-1]+" volt"</p>");
+      res.write("<p>2. feladat: Az első tánc " + tanc[0].TáncNeve + " és az utolsó tánc " + tanc[tanc.length - 3].TáncNeve + " volt</p>");
 
-
-      res.write("<p>1. feladat: Az adatok beolvasása</p>");
+     // for (let j: number)
+      res.write("<p>3. feladat: Az első tánc " + tanc[0].TáncNeve + " és az utolsó tánc " + tanc[tanc.length - 3].TáncNeve + " volt</p>");
       res.write("</p><input type='submit' value='Frissítés'></pre></form>");
       res.end();
    }
