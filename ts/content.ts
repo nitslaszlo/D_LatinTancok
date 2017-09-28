@@ -9,11 +9,17 @@ export class Content {
       res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
       res.write("<form style='font-size:16px; background: LightGray'>");
       res.write("<pre style='font-family: Courier'>");
+
       res.write("<p>1. feladat: Az adatok beolvasása</p>");
+      const tanc: Táncok[] = [];
+      const sor: string[] = fs.readFileSync("tancrend.txt").toString().split("\r\n");
+      for (let i: number = 1; i < sor.length-2; i++) {
+         if (sor[i].length > 0) tanc.push(new Táncok(sor[i], sor[i+1], sor[i+2] ));
+      }
+      res.write("<p>2. feladat: Az első tánc "+tanc[0]+" és az utolsó tánc "+tanc[tanc.length-1]+" volt"</p>");
 
-      const v: Táncok[] = [];
-      const sorok: string[] = fs.readFileSync("tancrend.txt").toString().split("\r\n");
 
+      res.write("<p>1. feladat: Az adatok beolvasása</p>");
       res.write("</p><input type='submit' value='Frissítés'></pre></form>");
       res.end();
    }
@@ -32,7 +38,7 @@ export class Content {
       const vazon: string = query.vazon === undefined ? "AB123" : query.vazon;
       const sorszam: string = query.sorszam === undefined ? "10" : query.sorszam;
 
-      const v: Class[] = [];
+      const v: Versenyző[] = [];
       const sorok: string[] = fs.readFileSync("valaszok.txt").toString().split("\r\n");
       Versenyző.helyesMegoldás = sorok[0];
       for (let i: number = 1; i < sorok.length; i++) {
