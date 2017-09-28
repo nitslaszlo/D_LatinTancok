@@ -6,6 +6,7 @@ class Program {
     constructor() {
         http.createServer(new Content().Content).listen(8080);
     }
+    res;
 }
 
 new Program();
