@@ -1,5 +1,6 @@
 ﻿import * as http from "http";
-import { Content } from "./Content";
+import { Content } from "./content";
+import { Táncok } from "./Tancok";
 
 class Program {
     constructor() {
