@@ -5,7 +5,6 @@ import { Táncok } from "./Tancok";
 class Program {
     constructor() {
         http.createServer(new Content().Content).listen(8080);
-        
     }
 }
 
