@@ -13,7 +13,7 @@ export class Content {
       res.write("<p>1. feladat: Az adatok beolvasása</p>");
       const tanc: Táncok[] = [];
       const sor: string[] = fs.readFileSync("tancrend.txt").toString().split("\r\n");
-      for (let i: number = 1; i < sor.length-2; i++) {
+      for (let i: number = 1; i < sor.length-2; i = i+3) {
          if (sor[i].length > 0) tanc.push(new Táncok(sor[i], sor[i+1], sor[i+2] ));
       }
       res.write("<p>2. feladat: Az első tánc " + tanc[0].TáncNeve + " és az utolsó tánc " + tanc[tanc.length - 3].TáncNeve + " volt</p>");
@@ -30,7 +30,7 @@ export class Content {
       {
          if (tanc[i].név1 == "Vilma" || tanc[i].név2 == "Vilma")
          { 
-            res.write(tanc[i].TáncNeve);
+            res.write(tanc[i].TáncNeve + "\n");
          }
       }
       res.write("</p><input type='submit' value='Frissítés'></pre></form>");
