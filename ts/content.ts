@@ -18,8 +18,13 @@ export class Content {
       }
       res.write("<p>2. feladat: Az első tánc " + tanc[0].TáncNeve + " és az utolsó tánc " + tanc[tanc.length - 3].TáncNeve + " volt</p>");
 
-     // for (let j: number)
-      res.write("<p>3. feladat: Az első tánc " + tanc[0].TáncNeve + " és az utolsó tánc " + tanc[tanc.length - 3].TáncNeve + " volt</p>");
+      let db: number= 0;
+      for (let i: number = 0; i < tanc.length; i++)
+      {
+         if (tanc[i].TáncNeve == "samba") db =db +1 ;
+      }
+      res.write("<p>3. feladat: "+db+" pár mutatott be sambát</p>");
+
       res.write("</p><input type='submit' value='Frissítés'></pre></form>");
       res.end();
    }
