@@ -25,6 +25,14 @@ export class Content {
       }
       res.write("<p>3. feladat: "+db+" pár mutatott be sambát</p>");
 
+      res.write("<p>4. feladat: Vilma itt táncolt:</p>");
+      for (let i: number = 0; i < tanc.length; i++)
+      {
+         if (tanc[i].név1 == "Vilma" || tanc[i].név2 == "Vilma")
+         { 
+            res.write(tanc[i].TáncNeve);
+         }
+      }
       res.write("</p><input type='submit' value='Frissítés'></pre></form>");
       res.end();
    }
