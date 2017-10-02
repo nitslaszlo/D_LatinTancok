@@ -10,6 +10,9 @@ export class Content {
       res.write("<form style='font-size:16px; background: LightGray'>");
       res.write("<pre style='font-family: Courier'>");
 
+      const query: any = url.parse(req.url, true).query;
+      const betanc: string = query.betanc === undefined ? "Samba" : query.betanc;
+
       res.write("<p>1. feladat: Az adatok beolvasása</p>");
       const tanc: Táncok[] = [];
       const sor: string[] = fs.readFileSync("tancrend.txt").toString().split("\r\n");
@@ -33,6 +36,11 @@ export class Content {
             res.write(tanc[i].TáncNeve + "\n");
          }
       }
+
+      res.write("<p>5. feladat: Írjon be egy tánc nevet = <input type='text' " +
+         "name= 'vazon' style= 'font-family:Courier; font - size: inherit; " +
+         "background:LightGray;' value='" + betanc + "'><br>");
+
       res.write("</p><input type='submit' value='Frissítés'></pre></form>");
       res.end();
    }
