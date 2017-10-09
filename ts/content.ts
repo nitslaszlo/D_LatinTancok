@@ -38,20 +38,26 @@ export class Content {
       }
 
       res.write("<p>5. feladat: Írjon be egy tánc nevet = <input type='text' " +
-         "name= 'vazon' style= 'font-family:Courier; font - size: inherit; " +
+         "name= 'betanc' style= 'font-family:Courier; font - size: inherit; " +
          "background:LightGray;' value='" + betanc + "'><br>");
+      let partner: number= 0;
       if (betanc != "")
       {
          for(let i: number = 0; i < tanc.length; i++)
-         {
-         
-            if (tanc[i].név1 == "Vilma" && tanc[i].TáncNeve == betanc) {
-               res.write("A {0} bemutatóján Vilma párja {1} volt", betanc, tanc[i].név2);
+         {         
+            if (tanc[i].név1 === "Vilma" && tanc[i].TáncNeve === betanc) {
+               res.write("A " + betanc + " bemutatóján Vilma párja " + tanc[i].név2 + " volt");
+               partner += 1;
             }
-            else if (tanc[i].név2 == "Vilma" && tanc[i].TáncNeve == betanc) {
-               res.write("A {0} bemutatóján Vilma párja {1} volt", betanc, tanc[i].név1);
+            if (tanc[i].név2 === "Vilma" && tanc[i].TáncNeve === betanc) {
+               res.write("A " + betanc + " bemutatóján Vilma párja " + tanc[i].név1 + " volt");
+               partner+= 1;
             }
-            else res.write("Vilma nem táncolt {0}-t.", betanc); break;
+            
+         }
+         if (partner == 0)
+         { 
+            res.write("Vilma nem táncolt " + betanc + "-t");
          }
       }
       
