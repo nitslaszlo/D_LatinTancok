@@ -41,6 +41,7 @@ export class Content {
          "name= 'vazon' style= 'font-family:Courier; font - size: inherit; " +
          "background:LightGray;' value='" + betanc + "'><br>");
 
+      
       res.write("</p><input type='submit' value='Frissítés'></pre></form>");
       res.end();
    }
