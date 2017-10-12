@@ -4,7 +4,7 @@ mivel fájlokat kell írni-olvasni.
 A csoport tagja:
 - Faust_Gábor (FaustGabor)
 - Szarka Gábor (szarkagabor)
-- Attila ()
+- Pillér Attila (PillerAttila)
 
 VS Code + TypeScript + Node.js + Git
 =====================================
