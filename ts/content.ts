@@ -18,14 +18,14 @@ export class Content {
       const sor: string[] = fs.readFileSync("tancrend.txt").toString().split("\r\n");
 
       for (let i: number = 1; i < sor.length - 2; i = i + 3) {
-         
+
          if (sor[i].length > 0) tanc.push(new Táncok(sor[i], sor[i + 1], sor[i + 2]));
-         
+
       }
 
       res.write("<p>2. feladat: Az első tánc " + tanc[0].TáncNeve + " és az utolsó tánc " + tanc[tanc.length - 3].TáncNeve + " volt</p>");
 
-      let db: number= 0;
+      let db: number = 0;
       for (let i: number = 0; i < tanc.length; i++) {
 
          if (tanc[i].TáncNeve === "samba") {
@@ -33,7 +33,7 @@ export class Content {
          }
       }
 
-      res.write("<p>3. feladat: "+db+" pár mutatott be sambát</p>");
+      res.write(`<p>3. feladat: "${db}" pár mutatott be sambát</p>`);
 
       res.write("<p>4. feladat: Vilma itt táncolt:</p>");
 
@@ -47,49 +47,44 @@ export class Content {
       res.write("<p>5. feladat: Írjon be egy tánc nevet = <input type='text' " +
          "name= 'betanc' style= 'font-family:Courier; font - size: inherit; " +
          "background:LightGray;' value='" + betanc + "'><br>");
-      
+
       let partner: number = 0;
-      
-      if (betanc != "")
-      {
-         for(let i: number = 0; i < tanc.length; i++) {         
+      if (betanc !== "") {
+         for (let i: number = 0; i < tanc.length; i++) {
             if (tanc[i].név1 === "Vilma" && tanc[i].TáncNeve === betanc) {
                res.write("A " + betanc + " bemutatóján Vilma párja " + tanc[i].név2 + " volt");
                partner += 1;
             }
             if (tanc[i].név2 === "Vilma" && tanc[i].TáncNeve === betanc) {
                res.write("A " + betanc + " bemutatóján Vilma párja " + tanc[i].név1 + " volt");
-               partner+= 1;
+               partner += 1;
             }
-            
-         }
-         if (partner === 0) { 
-            res.write("Vilma nem táncolt " + betanc + "-t");
-         }
-      }
-      //6.feladat:
 
-      const fiukneve = new Array<string>();
-      const lanyokneve = new Array<string>();
-      for (var index = 0; index < tanc.length; index++) {
-         var element = tanc[index];
-         if (fiukneve.indexOf(element.név2) === -1) fiukneve.push(element.név2);
-         
+         }
+         if (partner === 0) {
+            res.write("Vilma nem táncolt " + betanc + "-t");
+         }}
+
+      const fiukneve: Array<string> = new Array<string>();
+      const lanyokneve: Array<string> = new Array<string>();
+      for (let index: number = 0; index < tanc.length; index++) {
+      const element: Táncok = tanc[index];
+      if (fiukneve.indexOf(element.név2) === -1) fiukneve.push(element.név2);
+
       }
-      for (var index = 0; index < tanc.length; index++) {
-         var element = tanc[index];
+      for (let index: number = 0; index < tanc.length; index++) {
+         const element: Táncok = tanc[index];
          if (lanyokneve.indexOf(element.név1) === -1) lanyokneve.push(element.név1);
 
       }
-      
+
       fs.writeFileSync("tancolok.txt", "Lányokneve: " + lanyokneve + "\nFiúkneve: " + fiukneve);
-      
-      res.write("<p>7.feladat:</p>")
+      res.write("<p>7.feladat:</p>");
       const fiuk: number[] = [];
       for (let i: number = 0; i < tanc.length; i++) {
          let db1: number = 0;
          for (let j: number = 0; j < tanc.length; j++) {
-            if (tanc[i].név2 === tanc[j].név2){ db1++; }
+            if (tanc[i].név2 === tanc[j].név2) { db1++; }
          }
          fiuk.push(db1);
       }
@@ -97,7 +92,7 @@ export class Content {
       for (let i: number = 0; i < tanc.length; i++) {
          let db1: number = 0;
          for (let j: number = 0; j < tanc.length; j++) {
-            if (tanc[i].név2 === tanc[j].név2){ db1++; }
+            if (tanc[i].név2 === tanc[j].név2) { db1++; }
          }
          lanyok.push(db1);
       }
@@ -107,13 +102,13 @@ export class Content {
       for (let j: number = 0; j < lanyok.length; j++) {
          if (lanyok[j] >= szamlalo) { szamlalo = lanyok[j]; nev = tanc[j].név1; }
       }
-      res.write("<p>Legtöbbet szereplő lány neve: "+ nev +"</p>");
+      res.write(`<p>Legtöbbet szereplő lány neve: ${nev}</p>`);
       szamlalo = 0;
       nev = "";
       for (let j: number = 0; j < lanyok.length; j++) {
          if (fiuk[j] >= szamlalo) { szamlalo = lanyok[j]; nev = tanc[j].név2; }
       }
-      res.write("<p>Legtöbbet szereplő fiu neve: " + nev + "</p>");
+      res.write(`<p>Legtöbbet szereplő fiu neve: ${nev}</p>`);
 
       res.write("</p><input type='submit' value='Frissítés'></pre></form>");
       res.end();
