@@ -68,6 +68,9 @@ export class Content {
          }
       }
       
+
+      
+      res.write("<p>7.feladat:</p>")
       const fiuk: number[] = [];
       for (let i: number = 0; i < tanc.length; i++) {
          let db1: number = 0;
@@ -76,28 +79,6 @@ export class Content {
          }
          fiuk.push(db1);
       }
-
-      const fiukneve: string[] = [];
-      for (let i: number = 0; i < tanc.length; i++) {
-         for (let j: number = 0; j < fiukneve.length; j++) {
-            if (!(fiukneve[j] === tanc[i].név2)) {
-               fiukneve.push(tanc[i].név2);
-            }
-         }
-      }
-
-      const lanyokneve: string[] = [];
-      for (let i: number = 0; i < tanc.length; i++) {
-         for (let j: number = 0; j < lanyokneve.length; j++) {
-            if (!(lanyokneve[j] === tanc[i].név1)) {
-               lanyokneve.push(tanc[i].név1);
-            }
-         }
-      }
-
-
-
-
       const lanyok: number[] = [];
       for (let i: number = 0; i < tanc.length; i++) {
          let db1: number = 0;
