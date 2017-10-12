@@ -68,6 +68,37 @@ export class Content {
          }
       }
       
+      const fiuk: number[] = [];
+      for (let i: number = 0; i < tanc.length; i++) {
+         let db1: number = 0;
+         for (let j: number = 0; j < tanc.length; j++) {
+            if (tanc[i].név2 === tanc[j].név2){ db1++; }
+         }
+         fiuk.push(db1);
+      }
+
+      const lanyok: number[] = [];
+      for (let i: number = 0; i < tanc.length; i++) {
+         let db1: number = 0;
+         for (let j: number = 0; j < tanc.length; j++) {
+            if (tanc[i].név2 === tanc[j].név2){ db1++; }
+         }
+         lanyok.push(db1);
+      }
+
+      let szamlalo: number = 0;
+      let nev: string = "";
+      for (let j: number = 0; j < lanyok.length; j++) {
+         if (lanyok[j] >= szamlalo) { szamlalo = lanyok[j]; nev = tanc[j].név1; }
+      }
+      res.write("<p>Legtöbbet szereplő lány neve: "+ nev +"</p>");
+      szamlalo = 0;
+      nev = "";
+      for (let j: number = 0; j < lanyok.length; j++) {
+         if (fiuk[j] >= szamlalo) { szamlalo = lanyok[j]; nev = tanc[j].név2; }
+      }
+      res.write("<p>Legtöbbet szereplő fiu neve: " + nev + "</p>");
+
       res.write("</p><input type='submit' value='Frissítés'></pre></form>");
       res.end();
    }
