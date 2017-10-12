@@ -1,0 +1,2 @@
+Lányokneve: Luca,Katalin,Adrienn,Emma,Vilma,Szilvia,Elza,Fruzsina,Judit,Gabriella,Irma,Szabina 
+Fiúkneve: Kelemen,Bertalan,Lajos,Igor,Kolos,Alfonz,Tivadar,Ede,Imre,Attila,Salamon,Marcell

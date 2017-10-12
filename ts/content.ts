@@ -67,8 +67,22 @@ export class Content {
             res.write("Vilma nem táncolt " + betanc + "-t");
          }
       }
-      
+      //6.feladat:
 
+      const fiukneve = new Array<string>();
+      const lanyokneve = new Array<string>();
+      for (var index = 0; index < tanc.length; index++) {
+         var element = tanc[index];
+         if (fiukneve.indexOf(element.név2) === -1) fiukneve.push(element.név2);
+         
+      }
+      for (var index = 0; index < tanc.length; index++) {
+         var element = tanc[index];
+         if (lanyokneve.indexOf(element.név1) === -1) lanyokneve.push(element.név1);
+
+      }
+      
+      fs.writeFileSync("tancolok.txt", "Lányokneve: " + lanyokneve + "\nFiúkneve: " + fiukneve);
       
       res.write("<p>7.feladat:</p>")
       const fiuk: number[] = [];
