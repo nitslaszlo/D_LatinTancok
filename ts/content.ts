@@ -16,23 +16,30 @@ export class Content {
       res.write("<p>1. feladat: Az adatok beolvasása</p>");
       const tanc: Táncok[] = [];
       const sor: string[] = fs.readFileSync("tancrend.txt").toString().split("\r\n");
-      for (let i: number = 1; i < sor.length-2; i = i+3) {
-         if (sor[i].length > 0) tanc.push(new Táncok(sor[i], sor[i+1], sor[i+2] ));
+
+      for (let i: number = 1; i < sor.length - 2; i = i + 3) {
+         
+         if (sor[i].length > 0) tanc.push(new Táncok(sor[i], sor[i + 1], sor[i + 2]));
+         
       }
+
       res.write("<p>2. feladat: Az első tánc " + tanc[0].TáncNeve + " és az utolsó tánc " + tanc[tanc.length - 3].TáncNeve + " volt</p>");
 
       let db: number= 0;
-      for (let i: number = 0; i < tanc.length; i++)
-      {
-         if (tanc[i].TáncNeve == "samba") db =db +1 ;
+      for (let i: number = 0; i < tanc.length; i++) {
+
+         if (tanc[i].TáncNeve === "samba") {
+            db = db + 1;
+         }
       }
+
       res.write("<p>3. feladat: "+db+" pár mutatott be sambát</p>");
 
       res.write("<p>4. feladat: Vilma itt táncolt:</p>");
-      for (let i: number = 0; i < tanc.length; i++)
-      {
-         if (tanc[i].név1 == "Vilma" || tanc[i].név2 == "Vilma")
-         { 
+
+      for (let i: number = 0; i < tanc.length; i++) {
+
+         if (tanc[i].név1 === "Vilma" || tanc[i].név2 === "Vilma") {
             res.write(tanc[i].TáncNeve + "\n");
          }
       }
@@ -40,11 +47,12 @@ export class Content {
       res.write("<p>5. feladat: Írjon be egy tánc nevet = <input type='text' " +
          "name= 'betanc' style= 'font-family:Courier; font - size: inherit; " +
          "background:LightGray;' value='" + betanc + "'><br>");
-      let partner: number= 0;
+      
+      let partner: number = 0;
+      
       if (betanc != "")
       {
-         for(let i: number = 0; i < tanc.length; i++)
-         {         
+         for(let i: number = 0; i < tanc.length; i++) {         
             if (tanc[i].név1 === "Vilma" && tanc[i].TáncNeve === betanc) {
                res.write("A " + betanc + " bemutatóján Vilma párja " + tanc[i].név2 + " volt");
                partner += 1;
@@ -55,8 +63,7 @@ export class Content {
             }
             
          }
-         if (partner == 0)
-         { 
+         if (partner === 0) { 
             res.write("Vilma nem táncolt " + betanc + "-t");
          }
       }
